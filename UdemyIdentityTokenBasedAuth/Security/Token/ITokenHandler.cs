@@ -6,7 +6,7 @@ using UdemyIdentityTokenBasedAuth.Models;
 
 namespace UdemyIdentityTokenBasedAuth.Security.Token
 {
-    interface ITokenHandler
+    public interface ITokenHandler
     {
         AccessToken CreateAccessToken(AppUser user);
 

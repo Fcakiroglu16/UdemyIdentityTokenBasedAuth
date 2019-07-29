@@ -9,7 +9,7 @@ using UdemyIdentityTokenBasedAuth.ResourceViewModel;
 
 namespace UdemyIdentityTokenBasedAuth.Domain.Services
 {
-    interface IUserService
+  public   interface IUserService
     {
 
         Task<BaseResponse<UserViewModelResource>> UpdateUser(UserViewModelResource userViewModel, string userName);

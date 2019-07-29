@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication.Twitter;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UdemyIdentityTokenBasedAuth.Domain.Responses;
 using UdemyIdentityTokenBasedAuth.ResourceViewModel;
+using UdemyIdentityTokenBasedAuth.Security.Token;
 
 namespace UdemyIdentityTokenBasedAuth.Domain.Services
 {
