@@ -23,7 +23,7 @@ namespace UdemyIdentityTokenBasedAuth.Controllers
 
         //localhost:33444/api/ Authentication/IsAuthenticatin
         [HttpGet]
-        public ActionResult IsAuthenticatin()
+        public ActionResult IsAuthentication()
         {
 
             return Ok(User.Identity.IsAuthenticated);
