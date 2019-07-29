@@ -9,7 +9,7 @@ using UdemyIdentityTokenBasedAuth.Security.Token;
 
 namespace UdemyIdentityTokenBasedAuth.Domain.Services
 {
-    interface IAuthenticationService
+   public interface IAuthenticationService
     {
 
         Task<BaseResponse<UserViewModelResource>> SignUp(UserViewModelResource userViewModel);
