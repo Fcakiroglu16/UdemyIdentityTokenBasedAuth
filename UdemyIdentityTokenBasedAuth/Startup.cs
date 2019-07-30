@@ -12,8 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using UdemyIdentityTokenBasedAuth.Domain.Services;
 using UdemyIdentityTokenBasedAuth.Models;
 using UdemyIdentityTokenBasedAuth.Security.Token;
+using UdemyIdentityTokenBasedAuth.Services;
 
 namespace UdemyIdentityTokenBasedAuth
 {
@@ -29,6 +31,24 @@ namespace UdemyIdentityTokenBasedAuth
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITokenHandler, TokenHandler>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IUserService, UserService>();
+
+
+            services.AddCors(opts =>
+            {
+
+                opts.AddDefaultPolicy(builder =>
+                {
+
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+
+
+
+
             services.AddDbContext<AppIdentityDbContext>(opts =>
             {
                 opts.UseSqlServer(Configuration["ConnectionStrings:DefaultConnectionString"]);
@@ -100,6 +120,9 @@ namespace UdemyIdentityTokenBasedAuth
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseAuthentication();
+            app.UseStaticFiles();
+
 
             app.UseHttpsRedirection();
             app.UseMvc();
